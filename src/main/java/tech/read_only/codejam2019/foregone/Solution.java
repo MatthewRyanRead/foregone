@@ -6,12 +6,12 @@ import java.io.InputStreamReader;
 public class Solution {
     public static void main(final String[] args) {
         final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
-        try {
-            int numNums = Integer.parseInt(reader.readLine());
 
-            for (int i = 1; i <= numNums; i++) {
+        try {
+            final int numCases = Integer.valueOf(reader.readLine());
+            for (int i = 1; i <= numCases; i++) {
                 System.out.print("Case #" + i + ": ");
-                solve(reader.readLine());
+                solveAndPrint(reader.readLine().trim());
             }
         }
         catch (Exception e) {
@@ -19,48 +19,53 @@ public class Solution {
         }
     }
 
-    private static void solve(final String numStr) {
-        final int len = numStr.length();
-        final FourlessNumber check1 = new FourlessNumber(len);
-        final FourlessNumber check2 = new FourlessNumber(len);
+    private static void solveAndPrint(final String numStr) {
+        final FourlessNumber check2 = new FourlessNumber(numStr.length());
+        final boolean carry = initializeHalfNumber(numStr, check2);
 
-        boolean mustCarry = false;
-        boolean prevMustCarry = false;
-        for (int i = 0; i < len; i++) {
-            final byte val = Byte.parseByte(numStr.substring(i, i + 1));
-
-            if (mustCarry) {
-                check1.initDigit(i, (byte)(val/2 + 5));
-                check2.initDigit(i, (byte)(val/2 + 5));
-            }
-            else {
-                check1.initDigit(i, (byte)(val/2));
-                check2.initDigit(i, (byte)(val/2));
-            }
-
-            prevMustCarry = mustCarry;
-            mustCarry = val % 2 == 1;
+        final FourlessNumber check1 = new FourlessNumber(check2);
+        if (carry) {
+            check1.increment();
         }
 
-        if (mustCarry) {
-            check1.bump();
-        }
-
-        if (check1.fourless() && check2.fourless()) {
-            print(check1, check2);
-            return;
-        }
-
-        FourlessNumber difference = check1.nextOption(FourlessNumber.EMPTY);
-        do {
-            difference = check2.prevOption(difference);
-            difference = check1.nextOption(difference);
-        } while (!difference.isZero());
-
-        print(check1, check2);
+        solve(check1, check2);
+        System.out.println(check1.toString() + ' ' + check2.toString());
     }
 
-    private static void print(FourlessNumber check1, FourlessNumber check2) {
-        System.out.println(check1.toString() + ' ' + check2.toString());
+    private static void solve(final FourlessNumber check1, final FourlessNumber check2) {
+        // do one up front, to guarantee we've checked both at least once before exiting the loop
+        FourlessNumber difference = check1.nextNumber(FourlessNumber.NAN);
+        for (int i = 0; ; i = (i+1)%2) {
+            if (i == 0) {
+                difference = check2.prevNumber(difference);
+            } else {
+                difference = check1.nextNumber(difference);
+            }
+
+            if (difference.isZero()) {
+                break;
+            }
+        }
+    }
+
+    private static boolean initializeHalfNumber(final String numStr, final FourlessNumber check1) {
+        final StringBuilder sb = new StringBuilder();
+        boolean carry = false;
+        for (int i = 0; i < numStr.length(); i++) {
+            final int val = Integer.valueOf(numStr.substring(i, i + 1));
+
+            if (carry) {
+                sb.append(val/2 + 5);
+            }
+            else {
+                sb.append(val/2);
+            }
+
+            carry = val % 2 == 1;
+        }
+
+        check1.init(sb.toString());
+
+        return carry;
     }
 }

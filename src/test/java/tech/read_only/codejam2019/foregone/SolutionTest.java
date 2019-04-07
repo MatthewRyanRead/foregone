@@ -33,7 +33,7 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("1 1\n", OUT.toString());
+        assertEquals("Case #1: 1 1\n", OUT.toString());
     }
 
     @Test
@@ -42,7 +42,7 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("2 1\n", OUT.toString());
+        assertEquals("Case #1: 2 1\n", OUT.toString());
     }
 
     @Test
@@ -51,7 +51,7 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("2 2\n", OUT.toString());
+        assertEquals("Case #1: 2 2\n", OUT.toString());
     }
 
     @Test
@@ -60,7 +60,7 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("65 63\n", OUT.toString());
+        assertEquals("Case #1: 65 63\n", OUT.toString());
     }
 
     @Test
@@ -69,7 +69,25 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("167 166\n", OUT.toString());
+        assertEquals("Case #1: 167 166\n", OUT.toString());
+    }
+
+    @Test
+    public void test799() {
+        setInput("1\n799");
+
+        Solution.main(null);
+
+        assertEquals("Case #1: 500 299\n", OUT.toString());
+    }
+
+    @Test
+    public void test800() {
+        setInput("1\n800");
+
+        Solution.main(null);
+
+        assertEquals("Case #1: 500 300\n", OUT.toString());
     }
 
     @Test
@@ -78,7 +96,7 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("500 301\n", OUT.toString());
+        assertEquals("Case #1: 500 301\n", OUT.toString());
     }
 
     @Test
@@ -87,7 +105,34 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("500 380\n", OUT.toString());
+        assertEquals("Case #1: 500 380\n", OUT.toString());
+    }
+
+    @Test
+    public void test899() {
+        setInput("1\n899");
+
+        Solution.main(null);
+
+        assertEquals("Case #1: 500 399\n", OUT.toString());
+    }
+
+    @Test
+    public void test900() {
+        setInput("1\n900");
+
+        Solution.main(null);
+
+        assertEquals("Case #1: 501 399\n", OUT.toString());
+    }
+
+    @Test
+    public void test901() {
+        setInput("1\n901");
+
+        Solution.main(null);
+
+        assertEquals("Case #1: 502 399\n", OUT.toString());
     }
 
     @Test
@@ -96,16 +141,7 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("510 399\n", OUT.toString());
-    }
-
-    @Test
-    public void test1089() {
-        setInput("1\n1090");
-
-        Solution.main(null);
-
-        assertEquals("551 539\n", OUT.toString());
+        assertEquals("Case #1: 510 399\n", OUT.toString());
     }
 
     @Test
@@ -114,7 +150,16 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("550 538\n", OUT.toString());
+        assertEquals("Case #1: 550 538\n", OUT.toString());
+    }
+
+    @Test
+    public void test1089() {
+        setInput("1\n1090");
+
+        Solution.main(null);
+
+        assertEquals("Case #1: 551 539\n", OUT.toString());
     }
 
     @Test
@@ -123,7 +168,7 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("50006599 37339999\n", OUT.toString());
+        assertEquals("Case #1: 50006599 37339999\n", OUT.toString());
     }
 
     @Test
@@ -136,10 +181,10 @@ public class SolutionTest {
 
         Solution.main(null);
 
-        assertEquals("50006598763250000000076350 37339999999995099823399995\n" +
-                             "9381726175000009872500 9381726173762339999935\n" +
-                             "260587350000005002001 260399995763239999999\n" +
-                             "509009000090000010 399999999999999999\n",
+        assertEquals("Case #1: 50006598763250000000076350 37339999999995099823399995\n" +
+                     "Case #2: 9381726175000009872500 9381726173762339999935\n" +
+                     "Case #3: 260587350000005002001 260399995763239999999\n" +
+                     "Case #4: 509009000090000010 399999999999999999\n",
                      OUT.toString());
     }
 }
