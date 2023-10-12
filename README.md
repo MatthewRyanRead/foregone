@@ -1,6 +1,6 @@
 # Foregone
 
-My solution to [the Codejam 2019 problem](https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/0000000000088231).
+My solution to [the Codejam 2019 problem](http://web.archive.org/web/20220831143334/https://codingcompetitions.withgoogle.com/codejam/round/0000000000051705/0000000000088231).
 
 Unlike the solutions proposed on the Analysis section of that page, it solves the problem with a custom "Big Integer" type implementation I call a Fourless Number and performing a search not all that dissimilar from binary search.
 
